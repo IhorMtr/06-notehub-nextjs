@@ -1,4 +1,4 @@
-// app/notes/[id]/page.tsx
+import css from './NoteDetails.module.css';
 
 type Props = {
   params: Promise<{ id: string }>;
