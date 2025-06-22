@@ -1,5 +1,3 @@
-import css from './NoteDetails.module.css';
-
 type Props = {
   params: Promise<{ id: string }>;
 };
