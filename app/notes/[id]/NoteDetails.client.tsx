@@ -12,12 +12,10 @@ export default function NoteDetailsClient() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['note', id],
+    queryKey: ['note', parseInt(id)],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
   });
-
-  console.log(id);
 
   if (isLoading) return <p>Loading, please wait...</p>;
 
