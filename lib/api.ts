@@ -1,10 +1,6 @@
 import axios from 'axios';
 import type { Note } from '@/types/note';
-
-interface Response {
-  notes: Note[];
-  totalPages: number;
-}
+import type { Response } from '@/types/response';
 
 interface CreateNoteData {
   title: string;
@@ -39,6 +35,11 @@ export async function fetchNotes(
   }
 
   const response = await api.get<Response>('', { params });
+  return response.data;
+}
+
+export async function fetchNoteById(id: string) {
+  const response = await api.get<Note>(`/${id}`);
   return response.data;
 }
 

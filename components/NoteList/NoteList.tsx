@@ -3,6 +3,7 @@ import type { Note } from '@/types/note';
 import { deleteNote } from '@/lib/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import Link from 'next/link';
 
 interface NoteListProps {
   notes: Note[];
@@ -31,6 +32,9 @@ export default function NoteList({ notes }: NoteListProps) {
           <p className={css.content}>{note.content}</p>
           <div className={css.footer}>
             <span className={css.tag}>{note.tag}</span>
+            <Link href={`/notes/${encodeURIComponent(note.id)}`}>
+              View details
+            </Link>
             <button
               className={css.button}
               onClick={() => {
