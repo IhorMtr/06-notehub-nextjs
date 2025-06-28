@@ -12,11 +12,12 @@ type Props = {
 
 export default async function NoteDetails({ params }: Props) {
   const { id } = await params;
+  const numericId = parseInt(id);
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['note', parseInt(id)],
-    queryFn: () => fetchNoteById(id),
+    queryKey: ['note', numericId],
+    queryFn: () => fetchNoteById(numericId),
   });
 
   const dehydratedState = dehydrate(queryClient);
